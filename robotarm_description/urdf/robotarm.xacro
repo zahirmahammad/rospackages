@@ -1,0 +1,164 @@
+<?xml version="1.0" ?>
+<robot name="robotarm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find robotarm_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find robotarm_description)/urdf/robotarm.trans" />
+<xacro:include filename="$(find robotarm_description)/urdf/robotarm.gazebo" />
+
+
+
+  <link name="world"/>
+
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+
+
+
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.04999999999999996 0.02500000000000002 0.02689405273956329"/>
+    <mass value="3.475187791334983"/>
+    <inertia ixx="0.00316" ixy="0.0" ixz="0.0" iyy="0.00316" iyz="0.0" izz="0.004508"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://robotarm_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://robotarm_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+  
+<link name="link0_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.0351970025922483e-08 9.965190270189161e-09 0.04378456456724921"/>
+    <mass value="4.400024194453527"/>
+    <inertia ixx="0.00811" ixy="0.000776" ixz="0.0" iyy="0.007952" iyz="-0.0" izz="0.006234"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.05 -0.025 -0.055"/>
+    <geometry>
+      <mesh filename="package://robotarm_description/meshes/link0_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.05 -0.025 -0.055"/>
+    <geometry>
+      <mesh filename="package://robotarm_description/meshes/link0_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.058785911177173356 -0.012688933763409444 0.10088222699524893"/>
+    <mass value="11.901710054466355"/>
+    <inertia ixx="0.056192" ixy="-0.004943" ixz="0.01416" iyy="0.057195" iyz="0.012796" izz="0.024648"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.029886 -0.002742 -0.145"/>
+    <geometry>
+      <mesh filename="package://robotarm_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.029886 -0.002742 -0.145"/>
+    <geometry>
+      <mesh filename="package://robotarm_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.03769262007985558 0.07449658039809773 0.07095535530583519"/>
+    <mass value="11.505836906165397"/>
+    <inertia ixx="0.0387" ixy="-0.01045" ixz="-0.012991" iyy="0.04082" iyz="-0.01174" izz="0.032537"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.108216 0.068043 -0.349338"/>
+    <geometry>
+      <mesh filename="package://robotarm_description/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.108216 0.068043 -0.349338"/>
+    <geometry>
+      <mesh filename="package://robotarm_description/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev4" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.05 0.025 0.055"/>
+  <parent link="base_link"/>
+  <child link="link0_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<joint name="Rev5" type="revolute">
+  <origin rpy="0 0 0" xyz="0.020114 -0.022258 0.09"/>
+  <parent link="link0_1"/>
+  <child link="link1_1"/>
+  <axis xyz="-0.670473 0.741934 0.0"/>
+  <limit effort="100" lower="-0.872665" upper="1.745329" velocity="100"/>
+</joint>
+
+<joint name="Rev6" type="revolute">
+  <origin rpy="0 0 0" xyz="-0.07833 -0.070785 0.204338"/>
+  <parent link="link1_1"/>
+  <child link="link2_1"/>
+  <axis xyz="-0.670473 0.741934 0.0"/>
+  <limit effort="100" lower="-2.617994" upper="-0.087266" velocity="100"/>
+</joint>
+
+
+<!-- <transmission name="tran1">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Rev4">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor1">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Rev5">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Rev6">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission> -->
+
+
+
+
+</robot>

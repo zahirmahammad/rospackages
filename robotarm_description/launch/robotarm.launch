@@ -1,0 +1,28 @@
+<launch>
+  <param command="$(find xacro)/xacro $(find robotarm_description)/urdf/robotarm.xacro" name="robot_description"/>
+  <node args="-param robot_description -urdf -model robotarm" name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+<rosparam file="$(find robotarm_description)/launch/controller.yaml" command="load"/>
+<node args="Rev4_position_controller Rev5_position_controller Rev6_position_controller joint_state_controller " name="controller_spawner" ns="/robotarm" output="screen" pkg="controller_manager" respawn="false" type="spawner"/>
+<node name="robot_state_publisher" output="screen" pkg="robot_state_publisher" respawn="false" type="robot_state_publisher">
+  <remap from="/joint_states" to="/robotarm/joint_states"/>
+</node>
+
+
+
+    <!-- <node name="robotarm_controller_spawner" ns="/robotarm" pkg="controller_manager" type="spawner" args="joint_state_controller arm_controller" respawn="false" output="screen"/> -->
+
+
+    <!-- <node name="robotarm_control_ui" pkg="rqt_joint_trajectory_controller" type="rqt_joint_trajectory_controller" respawn="false" output="screen"/> -->
+
+
+
+  
+</launch> 

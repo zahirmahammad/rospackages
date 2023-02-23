@@ -1,0 +1,197 @@
+<?xml version="1.0" ?>
+<robot name="ddrobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find ddrobot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find ddrobot_description)/urdf/ddrobot.trans" />
+<xacro:include filename="$(find ddrobot_description)/urdf/ddrobot.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="-6.625537917614367e-08 0.01141602796883514 0.13809713409251909" rpy="0 0 0"/>
+    <mass value="128.0161805242377"/>
+    <inertia ixx="2.060185" iyy="0.934257" izz="1.930434" ixy="-1e-06" iyz="0.025533" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rightwheel_1">
+  <inertial>
+    <origin xyz="0.07787692493459164 1.3877787807814457e-16 1.3877787807814457e-17" rpy="0 0 0"/>
+    <mass value="10.94621356233882"/>
+    <inertia ixx="0.044556" iyy="0.028919" izz="0.028919" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.04 0.075 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/rightwheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.04 0.075 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/rightwheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="leftwheel_1">
+  <inertial>
+    <origin xyz="-0.07787692493459186 7.494005416219807e-16 -7.632783294297951e-16" rpy="0 0 0"/>
+    <mass value="10.946213562338906"/>
+    <inertia ixx="0.044556" iyy="0.028919" izz="0.028919" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.04 0.075 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/leftwheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.04 0.075 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/leftwheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link0_1">
+  <inertial>
+    <origin xyz="-6.217248937900877e-17 -2.2204460492503132e-17 0.02689405273956319" rpy="0 0 0"/>
+    <mass value="3.475187791334983"/>
+    <inertia ixx="0.00316" iyy="0.00316" izz="0.004508" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.0 -0.249" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/link0_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.0 -0.249" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/link0_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link1_1">
+  <inertial>
+    <origin xyz="-1.1002164687284844e-08 -1.3983370597598433e-08 0.04378455454736069" rpy="0 0 0"/>
+    <mass value="4.400022943131598"/>
+    <inertia ixx="0.008811" iyy="0.007251" izz="0.006234" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.0 -0.304" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.0 -0.304" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link2_1">
+  <inertial>
+    <origin xyz="-8.007388120591914e-10 0.03000168304063522 0.11355186192831879" rpy="0 0 0"/>
+    <mass value="11.901709381665485"/>
+    <inertia ixx="0.061586" iyy="0.061662" izz="0.014787" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.03 -0.394" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.03 -0.394" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link3_1">
+  <inertial>
+    <origin xyz="7.766699923110568e-11 0.0300013797587015 0.10538129626765314" rpy="0 0 0"/>
+    <mass value="11.505848530781071"/>
+    <inertia ixx="0.048483" iyy="0.050264" izz="0.013311" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.029998 -0.624" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/link3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.029998 -0.624" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ddrobot_description/meshes/link3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev1" type="continuous">
+  <origin xyz="0.04 -0.075 0.1" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="rightwheel_1"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="Rev2" type="continuous">
+  <origin xyz="-0.04 -0.075 0.1" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="leftwheel_1"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="Rigid3" type="fixed">
+  <origin xyz="0.0 0.0 0.249" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="link0_1"/>
+</joint>
+
+<joint name="Rev4" type="continuous">
+  <origin xyz="-0.0 0.0 0.055" rpy="0 0 0"/>
+  <parent link="link0_1"/>
+  <child link="link1_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<joint name="Rev5" type="revolute">
+  <origin xyz="0.0 -0.03 0.09" rpy="0 0 0"/>
+  <parent link="link1_1"/>
+  <child link="link2_1"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+  <limit upper="1.308997" lower="-1.308997" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Rev6" type="revolute">
+  <origin xyz="0.0 2e-06 0.23" rpy="0 0 0"/>
+  <parent link="link2_1"/>
+  <child link="link3_1"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+  <limit upper="1.308997" lower="-1.308997" effort="100" velocity="100"/>
+</joint>
+
+</robot>

@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: ddrobotg1_description
+    relative_path: urdf/ddrobotg1.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/ddrobotg1.srdf
+  CONFIG:
+    author_name: ddrobotg1
+    author_email: ddrobotg1@gmail.com
+    generated_timestamp: 1670053917
